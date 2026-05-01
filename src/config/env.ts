@@ -10,4 +10,8 @@ export const config = {
     secret: process.env.JWT_SECRET || 'super_secret_fallback_key_change_in_production',
     expiresIn: process.env.JWT_EXPIRES_IN || '1d',
   },
+  rateLimit: {
+    windowMs: process.env.RATE_LIMIT_WINDOW_MS ? parseInt(process.env.RATE_LIMIT_WINDOW_MS, 10) : 15 * 60 * 1000,
+    max: process.env.RATE_LIMIT_MAX ? parseInt(process.env.RATE_LIMIT_MAX, 10) : 100,
+  },
 };
