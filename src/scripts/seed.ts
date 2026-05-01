@@ -7,6 +7,7 @@ import { logger } from '../utils/logger';
 
 const MONGO_URI = process.env.MONGO_URI;
 if (!MONGO_URI) {
+  // eslint-disable-next-line no-console
   console.error(' MONGO_URI is not set. Copy .env.example to .env and fill in your values.');
   process.exit(1);
 }
