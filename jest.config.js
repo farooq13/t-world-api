@@ -5,7 +5,7 @@ module.exports = {
   roots: ['<rootDir>/tests'],
   testMatch: ['**/*.test.ts'],
   transform: {
-    '^.+\\.tsx?$': ['ts-jest', { tsconfig: { strict: false } }],
+    '^.+\\.tsx?$': ['ts-jest', { tsconfig: { strict: true, exactOptionalPropertyTypes: false, ignoreDeprecations: '6.0' } }],
   },
   collectCoverageFrom: ['src/**/*.ts', '!src/index.ts'],
   coverageDirectory: 'coverage',

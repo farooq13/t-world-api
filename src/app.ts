@@ -18,6 +18,17 @@ const app = express();
 // Security Middleware 
 app.use(helmet());
 app.use(cors({ origin: '*', methods: ['GET', 'POST', 'DELETE', 'PATCH', 'PUT'] }));
+
+// Fix for express-mongo-sanitize with Express 5 (req.query is a getter in Express 5)
+app.use((req, _res, next) => {
+  Object.defineProperty(req, 'query', {
+    value: { ...req.query },
+    writable: true,
+    configurable: true,
+    enumerable: true,
+  });
+  next();
+});
 app.use(mongoSanitize()); // prevent NoSQL injection
 
 // Request Parsing 
