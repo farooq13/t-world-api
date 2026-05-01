@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import type { StringValue } from 'ms';
 import jwt from 'jsonwebtoken';
 import { User } from '../models/User';
 import { AppError } from '../utils/AppError';
@@ -48,5 +49,5 @@ export const loginUser = async (email: string, password: string) => {
 
 const signToken = (payload: Omit<JwtPayload, 'iat' | 'exp'>): string =>
   jwt.sign(payload, config.jwt.secret, {
-    expiresIn: config.jwt.expiresIn as any,
+    expiresIn: config.jwt.expiresIn as StringValue,
   });

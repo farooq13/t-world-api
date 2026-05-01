@@ -11,11 +11,9 @@ export interface JwtPayload {
 }
 
 // Extend Express Request to carry the decoded user
-declare global {
-  namespace Express {
-    interface Request {
-      user?: JwtPayload;
-    }
+declare module 'express' {
+  interface Request {
+    user?: JwtPayload;
   }
 }
 
