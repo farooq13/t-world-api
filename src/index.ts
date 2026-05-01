@@ -7,7 +7,7 @@ const startServer = async () => {
   await connectDB();
 
   const server = app.listen(config.port, () => {
-    logger.info(`🚀 T-World API running on port ${config.port} [${config.nodeEnv}]`);
+    logger.info(`T-World API running on port ${config.port} [${config.nodeEnv}]`);
   });
 
   // Graceful shutdown
